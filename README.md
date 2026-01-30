@@ -114,6 +114,37 @@ npm start
 Frontend server
 npm run dev
 
+✅ Backend .env Example
+
+# Server Configuration
+PORT=5000
+
+# MongoDB Database
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/ecommerce
+
+# Email Configuration (Nodemailer)
+MAIL_USER=your_email@gmail.com
+MAIL_PASS=your_email_password
+
+# JWT / Security
+SECRET_KEY=your_secret_key
+
+# Cloudinary Configuration
+CLOUD_NAME=your_cloudinary_name
+API_KEY=your_cloudinary_api_key
+API_SECRET=your_cloudinary_api_secret
+
+# Razorpay Payment Gateway
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_SECRET=your_razorpay_key_secret
+
+✅ Frontend .env example
+# API base URL
+VITE_URL=http://localhost:8000
+
+# Razorpay Public Key
+VITE_RAZORPAY_KEY_ID=demo_key
+
 👨‍💻 Author
 Ankit Ahirwar
 
