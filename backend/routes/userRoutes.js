@@ -1,6 +1,7 @@
 import express from 'express'
-import {register, verify,reVerify,login, logout, forgetPassword, verifyOTP, changePassword, allUser, getUserById} from '../controller/userControler.js'
+import {register, verify,reVerify,login, logout, forgetPassword, verifyOTP, changePassword, allUser, getUserById, updateUser} from '../controller/userControler.js'
 import { isAdmin, isAuthenticated } from '../middleware/isAuthenticated.js'
+import {singleUpload} from '../middleware/multer.js'
 
 const router = express.Router()
 router.post("/register", register)
@@ -13,5 +14,6 @@ router.post('/verify-otp/:email', verifyOTP)
 router.post('/change-password/:email', changePassword)
 router.get("/all-user",isAuthenticated,isAdmin, allUser)
 router.get("/get-user/:userId", getUserById)
-
+router.put("/update/:id", isAuthenticated,singleUpload,updateUser);
+ 
 export default router 

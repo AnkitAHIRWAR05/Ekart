@@ -10,10 +10,12 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'   //  IMPORT THIS
 import axios from 'axios'
 import { toast } from 'sonner'
+import { useDispatch } from 'react-redux'
+import { setUser } from '@/redux/userSlice'
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
@@ -23,6 +25,7 @@ function Login() {
     password:"",
   })
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const handleChange = (e)=>{
     const {name, value } = e.target;
@@ -35,7 +38,7 @@ function Login() {
     e.preventDefault()
     console.log(formData)
     try {
-        setloading
+        setloading(true);
         const res = await axios.post(`http://localhost:8000/api/v1/user/login`, formData,{
             headers:{
                 "Content-Type": "application/json"
@@ -43,6 +46,8 @@ function Login() {
         })
         if(res.data.success){
             navigate('/')
+            dispatch(setUser(res.data.user))
+            localStorage.setItem("accessToken", res.data.accessToken)
             toast.success(res.data.message)
         }
     } catch (error) {
