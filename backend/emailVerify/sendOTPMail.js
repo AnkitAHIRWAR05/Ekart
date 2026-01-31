@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 import 'dotenv/config'
 
-export const sentOTPMail = (otp, email)=>{
+export const sentOTPMail = async(otp, email)=>{
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth:{
@@ -11,19 +11,17 @@ const transporter = nodemailer.createTransport({
 });
 
 const mailconfigurations = {
-    from: process.env.MAIL_user,
+    from: process.env.MAIL_USER,
     to: email,
     subject:'Password Reset OTP',
     html:`<p>Your OTP for password reset is:<b>${otp}</b> </p>`
 };
 transporter.sendMail(mailconfigurations, function(error, info){
-    if(error) throw Error(error);
+    // if(error) throw Error(error);
+    if(error) return console.error(error);
     console.log('OTP sent Successfully');
     console.log(info);
 
 });
 }
-
-
-
 
