@@ -76,7 +76,7 @@ export const verifyPayment = async (req, res) => {
         {
           status: "Paid",
           razorpayPaymentId: razorpay_payment_id,
-          razopaySignature: razorpay_signature,
+          razorpaySignature: razorpay_signature,
         },
         { new: true },
       );
