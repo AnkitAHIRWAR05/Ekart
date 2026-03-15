@@ -14,7 +14,7 @@ amount:{type:Number,required:true},
 tax:{type:Number, required:true},
 shipping:{type:Number, required:true},
 currency:{type:String, default: "INR"},
-status:{type:String, enum:["pending", "Paid","Failed"], default:"Pending"},
+status:{type:String, enum:["Pending", "Paid","Failed"], default:"Pending"},
 
 //razorpay fields
 
