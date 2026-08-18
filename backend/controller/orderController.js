@@ -86,7 +86,7 @@ export const verifyPayment = async (req, res) => {
         { $set: { items: [], totalPrice: 0 } },
       );
 
-      return res.json({ success: true, message: "Payment Successfull", order });
+      return res.json({ success: true, message: "Payment Successful", order });
     } else {
       await Order.findOneAndUpdate(
         { razorpayOrderId: razorpay_order_id },
@@ -98,7 +98,6 @@ export const verifyPayment = async (req, res) => {
         .json({ success: false, message: "Invalid Signature" });
     }
   } catch (error) {
-    console.log("❌ Error in verify Payment:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };

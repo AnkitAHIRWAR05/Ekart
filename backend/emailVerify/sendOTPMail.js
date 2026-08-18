@@ -17,11 +17,9 @@ const mailconfigurations = {
     html:`<p>Your OTP for password reset is:<b>${otp}</b> </p>`
 };
 transporter.sendMail(mailconfigurations, function(error, info){
-    // if(error) throw Error(error);
     if(error) return console.error(error);
     console.log('OTP sent Successfully');
     console.log(info);
 
 });
 }
-

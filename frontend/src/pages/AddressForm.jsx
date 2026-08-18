@@ -80,7 +80,7 @@ const AddressForm = () => {
         handler: async function (response) {
           try {
             const verifyRes = await axios.post(
-              `${import.meta.env.VITE_URL}/api/v1/orders/verify-payment}`,
+              `${import.meta.env.VITE_URL}/api/v1/orders/verify-payment`,
               response,
               {
                 headers: { Authorization: `bearer ${accessToken}` },
@@ -88,16 +88,17 @@ const AddressForm = () => {
             );
             if (verifyRes.data.success) {
               toast.success("✅ Payment Successfull");
-              dispatch(setCart({ items: [], totalPrice }));
+              dispatch(setCart({ items: [], totalPrice:0 }));
               navigate("/order-success");
             } else {
               toast.error("❌ Payment Verification failed");
             }
           } catch (error) {
+            console.log("Error in payment verification: ", error);
             toast.error("Error verifying payment");
           }
         },
-        model: {
+        modal: {
           ondismiss: async function () {
             //Handle user closing the popup
             await axios.post(
@@ -116,7 +117,7 @@ const AddressForm = () => {
         prefill: {
           name: formData.fullName,
           email: formData.email,
-          Contact: formData.phone,
+          contact: formData.phone,
         },
         theme: { color: "#F47286" },
       };

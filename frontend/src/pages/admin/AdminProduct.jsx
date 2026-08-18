@@ -100,7 +100,7 @@ const AdminProduct = () => {
       const res = await axios.put(
         `${import.meta.env.VITE_URL}/api/v1/product/update/${editProduct._id}`,
         formData,
-        {
+        {   
           headers: {
             Authorization: `bearer ${accessToken}`,
           },

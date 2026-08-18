@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 const mailconfigurations = {
-  from: process.env.MAIL_user,
+  from: process.env.MAIL_USER,
   to: email,
   subject: "Email Verification",
   html: `
@@ -24,7 +24,7 @@ const mailconfigurations = {
       </p>
 
       <a href="http://localhost:5173/verify/${token}"
-         style="
+        style="
            display: inline-block;
            padding: 12px 24px;
            margin: 20px 0;
@@ -33,8 +33,10 @@ const mailconfigurations = {
            text-decoration: none;
            font-weight: bold;
            border-radius: 6px;
-         ">
-        CLICK & VERIFY
+           "
+           >
+        CLICK & VERIFY 
+
       </a>
 
       <p style="font-size: 14px; color: #555;">
@@ -53,7 +55,6 @@ transporter.sendMail(mailconfigurations, function(error, info){
     if(error) throw Error(error);
     console.log('email sent Successfully');
     console.log(info);
-
 });
 }
 

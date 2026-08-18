@@ -10,17 +10,19 @@ import orderRoute from "./routes/orderRoute.js"
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:[ "http://localhost:5173",
+    "https://ekart-jebj-ankits-projects-2aa90821.vercel.app"
+    ],
     credentials: true,
   })
 );
 
+// routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/cart", cartRoute);

@@ -1,6 +1,5 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import  Nevbar  from './components/ui/Nevbar'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
@@ -27,7 +26,7 @@ import OrderSuccess from './pages/OrderSuccess'
 const router  = createBrowserRouter([
   {
     path:'/',
-    element:<><Nevbar/><Home/><Footer/></>
+    element:<><Navbar/><Home/><Footer/></>
   },
     {
     path:'/signup',
@@ -47,19 +46,19 @@ const router  = createBrowserRouter([
   },
    {
     path:'/profile/:userId',
-    element:<ProtectedRoute><Nevbar/><Profile/></ProtectedRoute>
+    element:<ProtectedRoute><Navbar/><Profile/></ProtectedRoute>
   },
   {
     path:'/products',
-    element:<><Nevbar/><Products/></>
+    element:<><Navbar/><Products/></>
   },
    {
     path:'/products/:id',
-    element:<><Nevbar/><SingleProduct/></>
+    element:<><Navbar/><SingleProduct/></>
   },
     {
     path:'/cart',
-    element:<ProtectedRoute><Nevbar/><Cart/></ProtectedRoute>
+    element:<ProtectedRoute><Navbar/><Cart/></ProtectedRoute>
   },
    {
     path:'/address',
@@ -112,5 +111,4 @@ const App = () => {
     </>
   )
 }
-
 export default App
